@@ -1,51 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Invitación de Boda — iPhone Real</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación de Boda</title>
 <style>
-:root{
---bg:#ffffff;
---gold-1:#c7a26b;
---gold-2:#d8b06a;
---accent:linear-gradient(135deg,var(--gold-1),var(--gold-2));
---text:#2b2b2b;
-}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);font-family:Inter,system-ui,Arial;color:var(--text);padding:24px}
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #fdfaf6, #f3e8c8);
+        font-family: 'Arial', sans-serif;
+    }
 
+    .iphone-container {
+        position: relative;
+        width: 300px; /* Ajusta el tamaño */
+        height: 650px; /* Proporción aproximada del iPhone 17 Pro Max */
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/IPhone_14_Pro_Max_PNG.png'); /* Puedes cambiar por un iPhone 17 real si encuentras la imagen */
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.page{width:100%;max-width:760px;padding:36px;background:linear-gradient(180deg,#ffffff 0%,#fffdf9 100%);box-shadow:0 20px 50px rgba(30,30,30,0.06);position:relative;overflow:hidden;display:flex;justify-content:center;align-items:center;flex-direction:column}
+    .screen {
+        position: absolute;
+        top: 75px;  /* Ajusta según la imagen del iPhone */
+        left: 22px; /* Ajusta según la imagen */
+        width: 256px; /* Ajusta según la imagen */
+        height: 500px; /* Ajusta según la imagen */
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+    }
 
+    .screen h1 {
+        color: #bfa46f; /* Dorado */
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
 
-.iphone-img{width:300px;max-width:90%;border-radius:40px;box-shadow:0 15px 40px rgba(0,0,0,0.15);position:relative;}
-
-
-.screen-overlay{position:absolute;top:13%;left:12%;width:76%;height:74%;background:rgba(255,255,255,0.95);border-radius:30px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
-
-
-.initials{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:6px auto 12px auto;background:var(--accent);font-family:'Playfair Display',serif;color:white;font-size:32px;font-weight:700;box-shadow:0 10px 22px rgba(199,162,107,0.22)}
-.couple{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);margin:6px 0}
-.meta{font-size:13px;color:#5b5b5b;margin:8px 0}
-.date{font-weight:600;color:var(--text);font-size:15px;margin-top:6px}
-.details{margin-top:8px;font-size:13px;color:#5b5b5b}
+    .screen p {
+        color: #333;
+        font-size: 18px;
+        line-height: 1.5;
+    }
 </style>
 </head>
 <body>
-<div class="page">
-<div class="iphone-img">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/IPhone_14_Pro_Max_Vector.svg/800px-IPhone_14_Pro_Max_Vector.svg.png" alt="iPhone real dorado" style="width:100%;display:block;border-radius:40px;">
-<div class="screen-overlay">
-<div class="initials" id="initials">A &amp; B</div>
-<h2 class="couple" id="names">Ana &amp; Bruno</h2>
-<div class="meta">Tienen el agrado de invitarte a su matrimonio</div>
-<div class="date" id="date">Sábado, 14 de Febrero de 2026 — 18:00</div>
-<div class="details" id="location">Iglesia San Martín — Calle Principal 123</div>
-<div class="details" id="rsvp">Confirmar: +595 9XX XXXXXX</div>
+
+<div class="iphone-container">
+    <div class="screen">
+        <h1>¡Nos Casamos!</h1>
+        <p>
+            Te invitamos cordialmente a celebrar nuestro matrimonio<br>
+            el día 15 de marzo de 2026<br>
+            en el Salón Principal, Ciudad de Asunción.
+        </p>
+    </div>
 </div>
-</div>
-</div>
+
 </body>
 </html>
