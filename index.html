@@ -1,87 +1,83 @@
 <!doctype html>
-<div>
-<label>Contacto / RSVP</label>
-<input id="inputRSVP" placeholder="+595 9XX XXXXXX">
-</div>
-<div style="display:flex;gap:8px">
-<button class="primary" id="btnUpdate">Actualizar invitación</button>
-<button id="btnReset" type="button">Restaurar ejemplo</button>
-</div>
-</form>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Invitación de Boda — iPhone 17 Pro Max (Blanco & Dorado)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#ffffff;
+--gold-1:#c7a26b;
+--gold-2:#d8b06a;
+--accent:linear-gradient(135deg,var(--gold-1),var(--gold-2));
+--phone-frame:#e9d9bf; /* dorado pálido */
+--screen-bg:#fffefc;
+--text:#2b2b2b;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);font-family:Inter,system-ui,Arial;color:var(--text);padding:24px}
 
 
-<div class="footer">Toca "Actualizar invitación" para ver los cambios en el iPhone.</div>
-</div>
-
-
-<script>
-const initialData = {
-initials: 'A & B',
-names: 'Ana & Bruno',
-day: 'Sábado',
-date: '14 de Febrero de 2026',
-time: '18:00',
-location: 'Iglesia San Martín — Calle Principal 123',
-rsvp: 'Confirmar asistencia: +595 9XX XXXXXX'
+/* elegante patrón sutil en el fondo (uso de SVG en CSS) */
+.page{
+width:100%;max-width:760px;border-radius:24px;padding:36px;background:linear-gradient(180deg,#ffffff 0%,#fffdf9 100%);box-shadow:0 20px 50px rgba(30,30,30,0.06);position:relative;overflow:hidden;
+}
+.page::before{
+content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(199,162,107,0.04) 1px, transparent 1px);background-size:60px 60px;opacity:0.6;pointer-events:none;mix-blend-mode:screen;
 }
 
 
-const $ = id => document.getElementById(id)
+.layout{display:flex;gap:28px;align-items:center;justify-content:center}
 
 
-function loadExample(){
-$('initials').textContent = initialData.initials
-$('names').textContent = initialData.names
-$('date').textContent = `${initialData.day}, ${initialData.date} — ${initialData.time}`
-$('location').textContent = initialData.location
-$('rsvp').textContent = initialData.rsvp
+/* Mockup iPhone dorado */
+.iphone-wrap{flex:0 0 340px;display:flex;align-items:center;justify-content:center}
+.iphone{
+width:320px;aspect-ratio:9/19.5;background:var(--phone-frame);border-radius:44px;padding:12px;box-shadow:0 30px 50px rgba(0,0,0,0.12), inset 0 2px 0 rgba(255,255,255,0.6);position:relative;display:flex;align-items:center;justify-content:center
+}
+.camera-bar{position:absolute;top:12px;left:50%;transform:translateX(-50%);height:28px;width:160px;border-radius:16px;background:rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center}
+.camera-bar::before{content:'';width:10px;height:10px;background:#2b2b2b;border-radius:50%;margin-right:8px;box-shadow:18px 0 0 #2b2b2b}
 
 
-// inputs
-$('inputInitials').value = initialData.initials
-$('inputNames').value = initialData.names
-$('inputDay').value = initialData.day
-$('inputDate').value = initialData.date
-$('inputTime').value = initialData.time
-$('inputLocation').value = initialData.location
-$('inputRSVP').value = initialData.rsvp.replace('Confirmar asistencia: ','')
+.screen{
+width:100%;height:100%;background:var(--screen-bg);border-radius:34px;padding:22px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative
 }
 
 
-$('btnUpdate').addEventListener('click', ()=>{
-const initials = $('inputInitials').value.trim() || initialData.initials
-const names = $('inputNames').value.trim() || initialData.names
-const day = $('inputDay').value.trim() || ''
-const date = $('inputDate').value.trim() || ''
-const time = $('inputTime').value.trim() || ''
-const location = $('inputLocation').value.trim() || ''
-const rsvp = $('inputRSVP').value.trim() || ''
+/* Invitación dentro del teléfono */
+.card{
+width:92%;max-width:260px;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(252,250,248,0.98));border-radius:18px;padding:20px;text-align:center;border:1px solid rgba(199,162,107,0.12);box-shadow:0 10px 30px rgba(199,162,107,0.08);
+}
+.card-deco{height:8px;width:60px;margin:0 auto 14px;border-radius:999px;background:var(--accent);box-shadow:0 6px 18px rgba(215,176,105,0.18)}
+.initials{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:6px auto 12px auto;background:var(--accent);font-family:'Playfair Display',serif;color:white;font-size:32px;font-weight:700;box-shadow:0 10px 22px rgba(199,162,107,0.22)}
+.couple{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);margin:6px 0}
+.meta{font-size:13px;color:#5b5b5b;margin:8px 0}
+.date{font-weight:600;color:var(--text);font-size:15px;margin-top:6px}
+.details{margin-top:8px;font-size:13px;color:#5b5b5b}
 
 
-$('initials').textContent = initials
-$('names').textContent = names
-const dateLine = [day, date].filter(Boolean).join(', ')
-$('date').textContent = dateLine ? `${dateLine} — ${time}` : (time || '')
-$('location').textContent = location
-$('rsvp').textContent = rsvp ? `Confirmar asistencia: ${rsvp}` : ''
-})
+/* Panel lateral con texto explicativo y editor */
+.panel{flex:1;min-width:260px}
+.title{font-family:'Playfair Display',serif;font-size:22px;margin:4px 0 12px 0;color:#2b2b2b}
+.subtitle{font-size:13px;color:#6b6b6b;margin-bottom:12px}
 
 
-$('btnReset').addEventListener('click', loadExample)
+form.editor{display:flex;flex-direction:column;gap:8px}
+label{font-size:13px;color:#444}
+input,select,button,textarea{font-family:inherit;padding:10px;border-radius:10px;border:1px solid #eee;background:#fff}
+.row{display:flex;gap:8px}
+button.primary{background:var(--gold-1);color:white;border:none;padding:10px;border-radius:10px;cursor:pointer}
+button.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);cursor:pointer}
+.small{font-size:12px;color:#777}
 
 
-// elementos para actualizar en tiempo real (opcional)
-['inputInitials','inputNames'].forEach(id=>{
-const el = $(id)
-el.addEventListener('input', ()=>{
-if(id==='inputInitials') $('initials').textContent = el.value || initialData.initials
-if(id==='inputNames') $('names').textContent = el.value || initialData.names
-})
-})
-
-
-// init
-loadExample()
-</script>
-</body>
+@media (max-width:840px){
+.layout{flex-direction:column;gap:18px}
+.iphone-wrap{order:1}
+.panel{order:2;width:100%}
+}
+</style>
+</head>
+<body>
 </html>
