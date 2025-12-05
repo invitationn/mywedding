@@ -121,6 +121,14 @@
     }, 1000);  // espera 0.5 s y aparece
   });
 </script>
+  <script>
+  window.addEventListener('load', () => {
+    const container = document.getElementById('container');
+    setTimeout(() => {
+      container.classList.add('show');
+    }, 500); // espera 0.5 segundos antes de mostrar todo
+  });
+</script>
 
 </body>
 </html>
