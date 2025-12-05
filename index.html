@@ -5,124 +5,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación de Boda</title>
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        /* Fondo estilo boda */
-        background: radial-gradient(circle at top, #fffaf5, #f3e8c8);
-        overflow: hidden;
-    }
-
-    /* Confeti sutil */
-    body::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://i.postimg.cc/y8PtTZxV/confetti.png'); /* pequeño confeti transparente */
-        background-repeat: repeat;
-        opacity: 0.1;
-        pointer-events: none;
-    }
-
-    /* Contenedor del iPhone */
-    .iphone {
-        position: relative;
-        width: 340px;
-        height: 720px;
-        background: #111;
-        border-radius: 60px;
-        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Cámara y auricular frontal */
-    .iphone::before {
-        content: '';
-        position: absolute;
-        top: 15px;
-        width: 80px;
-        height: 6px;
-        border-radius: 10px;
-        background: #333;
-    }
-
-    /* Botón lateral derecho */
-    .side-button {
-        position: absolute;
-        right: -8px;
-        top: 200px;
-        width: 5px;
-        height: 80px;
-        background: #333;
-        border-radius: 3px;
-    }
-
-    /* Pantalla del iPhone */
-    .screen {
-        position: relative;
-        width: 90%;
-        height: 85%;
-        background: linear-gradient(to bottom, #ffffff 0%, #fffaf0 100%);
-        border-radius: 40px;
-        box-shadow: inset 0 0 25px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 30px;
-        overflow: hidden;
-    }
-
-    /* Efecto de luz realista en la pantalla */
-    .screen::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 40px;
-        background: linear-gradient(145deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
-        pointer-events: none;
-    }
-
-    .screen h1 {
-        font-size: 30px;
-        color: #bfa46f;
-        margin-bottom: 20px;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .screen p {
-        font-size: 18px;
-        color: #444;
-        line-height: 1.5;
-    }
-
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Usa tu fondo de boda descargado */
+    background: url('tu-fondo-boda.jpg') center center / cover no-repeat;
+    overflow: hidden;
+  }
+  .iphone {
+    position: relative;
+    width: 340px;
+    height: 720px;
+    background: #111;
+    border-radius: 60px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .iphone.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .side-button {
+    position: absolute;
+    right: -8px;
+    top: 200px;
+    width: 5px;
+    height: 80px;
+    background: #333;
+    border-radius: 3px;
+  }
+  .screen {
+    position: relative;
+    width: 90%;
+    height: 85%;
+    background: linear-gradient(to bottom, #ffffff 0%, #fffaf0 100%);
+    border-radius: 40px;
+    box-shadow: inset 0 0 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    overflow: hidden;
+  }
+  .screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    background: linear-gradient(145deg,
+      rgba(255,255,255,0.2) 0%,
+      rgba(255,255,255,0) 50%);
+    pointer-events: none;
+  }
+  .screen h1 {
+    font-size: 30px;
+    color: #bfa46f;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .screen p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.5;
+  }
 </style>
 </head>
 <body>
 
-<div class="iphone">
-    <div class="side-button"></div>
-    <div class="screen">
-        <h1>¡Nos Casamos!</h1>
-        <p>
-            Te invitamos cordialmente a celebrar nuestro matrimonio<br>
-            el día 15 de marzo de 2026<br>
-            en el Salón Principal, Ciudad de Asunción.
-        </p>
-    </div>
+<div id="phone" class="iphone">
+  <div class="side-button"></div>
+  <div class="screen">
+    <h1>¡Nos Casamos!</h1>
+    <p>
+      Te invitamos cordialmente a celebrar nuestro matrimonio<br>
+      el día 15 de marzo de 2026<br>
+      en el Salón Principal, Ciudad de Asunción.
+    </p>
+  </div>
 </div>
+
+<script>
+  // Animación de "encendido"
+  window.addEventListener('load', () => {
+    const phone = document.getElementById('phone');
+    setTimeout(() => {
+      phone.classList.add('show');
+    }, 500);  // espera 0.5 s y aparece
+  });
+</script>
 
 </body>
 </html>
