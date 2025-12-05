@@ -1,127 +1,87 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>B-day</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Georgia', serif;
-      background-image: url('https://images.unsplash.com/photo-1727548096117-de9a65873d45?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: white;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-    }
-
-    .info {
-      font-size: 1.3em;
-      margin-bottom: 2em;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 15px;
-    }
-
-    .countdown {
-      font-size: 2em;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 15px 25px;
-      border-radius: 10px;
-      margin-bottom: 2em;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      .info {
-        font-size: 1em;
-      }
-
-      .countdown {
-        font-size: 1.2em;
-        padding: 10px 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>¡Estás cordialmente invitad@ a la mejor fiesta del condado!</h1>
-  <h1>B-day N°24</h1>
-  <div class="info">
-    📅 <strong>Fecha:</strong> 26 de julio<br />
-    🕓 <strong>Hora:</strong> 16:00 hs<br />
-    📍 <strong>Lugar:</strong> Predio "EL ARRIERO"<br />
-    👢 <strong>Dress Code:</strong> Yellowstone - Estilo Western
-  </div>
-
-  <div class="countdown" id="countdown">Cargando cuenta regresiva...</div>
-  <div style="margin-top: 2em">
-    <h2>🥃 No olvides traer tu bebida de preferencia...</h2>
-    <h2>📲 Unite al grupo de WhatsApp</h2>
-  <p>Para confirmar tu asistencia y como llegar al evento unite al grupo de whatsapp.</p>
- <a href="https://chat.whatsapp.com/DtyyosPLhO93CBI5L3RkXi?mode=r_t" target="_blank">
-  CLICK aca para unirte al grupo
-</a> 
-</a>
+<!doctype html>
+<div>
+<label>Contacto / RSVP</label>
+<input id="inputRSVP" placeholder="+595 9XX XXXXXX">
 </div>
+<div style="display:flex;gap:8px">
+<button class="primary" id="btnUpdate">Actualizar invitación</button>
+<button id="btnReset" type="button">Restaurar ejemplo</button>
 </div>
-      
-  <script>
-    const countdownElement = document.getElementById("countdown");
-    const eventDate = new Date("2025-07-26T16:00:00-03:00").getTime();
+</form>
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
 
-      if (distance <= 0) {
-        countdownElement.innerHTML = "¡Es hoy! ¡Nos vemos en PACURI!";
-        return;
-      }
+<div class="footer">Toca "Actualizar invitación" para ver los cambios en el iPhone.</div>
+</div>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdownElement.innerHTML = `
-        Faltan ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos
-      `;
-    }
+<script>
+const initialData = {
+initials: 'A & B',
+names: 'Ana & Bruno',
+day: 'Sábado',
+date: '14 de Febrero de 2026',
+time: '18:00',
+location: 'Iglesia San Martín — Calle Principal 123',
+rsvp: 'Confirmar asistencia: +595 9XX XXXXXX'
+}
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-  <h2>¿Como Llegar?</h2>
-<iframe
-  <iframe
-  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1789.3547830639632!2d-57.1698787!3d-26.2386249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945befba1fd03c45%3A0x157e0753489ac918!2sEl%20Arriero!5e0!3m2!1ses-419!2spy!4v1753115607345!5m2!1ses-419!2spy"
-  width="300"
-  height="450"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-  
-</iframe>
- 
+
+const $ = id => document.getElementById(id)
+
+
+function loadExample(){
+$('initials').textContent = initialData.initials
+$('names').textContent = initialData.names
+$('date').textContent = `${initialData.day}, ${initialData.date} — ${initialData.time}`
+$('location').textContent = initialData.location
+$('rsvp').textContent = initialData.rsvp
+
+
+// inputs
+$('inputInitials').value = initialData.initials
+$('inputNames').value = initialData.names
+$('inputDay').value = initialData.day
+$('inputDate').value = initialData.date
+$('inputTime').value = initialData.time
+$('inputLocation').value = initialData.location
+$('inputRSVP').value = initialData.rsvp.replace('Confirmar asistencia: ','')
+}
+
+
+$('btnUpdate').addEventListener('click', ()=>{
+const initials = $('inputInitials').value.trim() || initialData.initials
+const names = $('inputNames').value.trim() || initialData.names
+const day = $('inputDay').value.trim() || ''
+const date = $('inputDate').value.trim() || ''
+const time = $('inputTime').value.trim() || ''
+const location = $('inputLocation').value.trim() || ''
+const rsvp = $('inputRSVP').value.trim() || ''
+
+
+$('initials').textContent = initials
+$('names').textContent = names
+const dateLine = [day, date].filter(Boolean).join(', ')
+$('date').textContent = dateLine ? `${dateLine} — ${time}` : (time || '')
+$('location').textContent = location
+$('rsvp').textContent = rsvp ? `Confirmar asistencia: ${rsvp}` : ''
+})
+
+
+$('btnReset').addEventListener('click', loadExample)
+
+
+// elementos para actualizar en tiempo real (opcional)
+['inputInitials','inputNames'].forEach(id=>{
+const el = $(id)
+el.addEventListener('input', ()=>{
+if(id==='inputInitials') $('initials').textContent = el.value || initialData.initials
+if(id==='inputNames') $('names').textContent = el.value || initialData.names
+})
+})
+
+
+// init
+loadExample()
+</script>
 </body>
 </html>
