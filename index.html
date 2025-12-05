@@ -8,58 +8,84 @@
     body {
         margin: 0;
         padding: 0;
+        font-family: 'Arial', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         background: linear-gradient(135deg, #fdfaf6, #f3e8c8);
-        font-family: 'Arial', sans-serif;
     }
 
-    .iphone-container {
+    /* Contenedor del iPhone */
+    .iphone {
         position: relative;
-        width: 300px; /* Ajusta el tamaño */
-        height: 650px; /* Proporción aproximada del iPhone 17 Pro Max */
-        background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/IPhone_14_Pro_Max_PNG.png'); /* Puedes cambiar por un iPhone 17 real si encuentras la imagen */
-        background-size: contain;
-        background-repeat: no-repeat;
+        width: 320px;
+        height: 700px;
+        background: #111; /* marco del iPhone */
+        border-radius: 60px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .screen {
+    /* Cámara frontal */
+    .iphone::before {
+        content: '';
         position: absolute;
-        top: 75px;  /* Ajusta según la imagen del iPhone */
-        left: 22px; /* Ajusta según la imagen */
-        width: 256px; /* Ajusta según la imagen */
-        height: 500px; /* Ajusta según la imagen */
-        background: rgba(255, 255, 255, 0.9);
+        top: 15px;
+        width: 70px;
+        height: 5px;
+        border-radius: 10px;
+        background: #333;
+    }
+
+    /* Pantalla del iPhone */
+    .screen {
+        width: 90%;
+        height: 85%;
+        background: linear-gradient(to bottom, #ffffff 0%, #fffaf0 100%);
         border-radius: 40px;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 20px;
         text-align: center;
+        padding: 30px;
+        overflow: hidden;
     }
 
     .screen h1 {
-        color: #bfa46f; /* Dorado */
-        font-size: 24px;
-        margin-bottom: 10px;
+        font-size: 28px;
+        color: #bfa46f; /* dorado */
+        margin-bottom: 15px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .screen p {
-        color: #333;
         font-size: 18px;
+        color: #444;
         line-height: 1.5;
+    }
+
+    /* Efecto de luz en la pantalla */
+    .screen::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 40px;
+        background: linear-gradient(145deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%);
+        pointer-events: none;
     }
 </style>
 </head>
 <body>
 
-<div class="iphone-container">
+<div class="iphone">
     <div class="screen">
         <h1>¡Nos Casamos!</h1>
         <p>
@@ -72,3 +98,4 @@
 
 </body>
 </html>
+
