@@ -13,40 +13,66 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background: linear-gradient(135deg, #fdfaf6, #f3e8c8);
+        /* Fondo estilo boda */
+        background: radial-gradient(circle at top, #fffaf5, #f3e8c8);
+        overflow: hidden;
+    }
+
+    /* Confeti sutil */
+    body::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://i.postimg.cc/y8PtTZxV/confetti.png'); /* pequeño confeti transparente */
+        background-repeat: repeat;
+        opacity: 0.1;
+        pointer-events: none;
     }
 
     /* Contenedor del iPhone */
     .iphone {
         position: relative;
-        width: 320px;
-        height: 700px;
-        background: #111; /* marco del iPhone */
+        width: 340px;
+        height: 720px;
+        background: #111;
         border-radius: 60px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    /* Cámara frontal */
+    /* Cámara y auricular frontal */
     .iphone::before {
         content: '';
         position: absolute;
         top: 15px;
-        width: 70px;
-        height: 5px;
+        width: 80px;
+        height: 6px;
         border-radius: 10px;
         background: #333;
     }
 
+    /* Botón lateral derecho */
+    .side-button {
+        position: absolute;
+        right: -8px;
+        top: 200px;
+        width: 5px;
+        height: 80px;
+        background: #333;
+        border-radius: 3px;
+    }
+
     /* Pantalla del iPhone */
     .screen {
+        position: relative;
         width: 90%;
         height: 85%;
         background: linear-gradient(to bottom, #ffffff 0%, #fffaf0 100%);
         border-radius: 40px;
-        box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        box-shadow: inset 0 0 25px rgba(0,0,0,0.1);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -56,20 +82,7 @@
         overflow: hidden;
     }
 
-    .screen h1 {
-        font-size: 28px;
-        color: #bfa46f; /* dorado */
-        margin-bottom: 15px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .screen p {
-        font-size: 18px;
-        color: #444;
-        line-height: 1.5;
-    }
-
-    /* Efecto de luz en la pantalla */
+    /* Efecto de luz realista en la pantalla */
     .screen::after {
         content: '';
         position: absolute;
@@ -78,14 +91,29 @@
         width: 100%;
         height: 100%;
         border-radius: 40px;
-        background: linear-gradient(145deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%);
+        background: linear-gradient(145deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
         pointer-events: none;
     }
+
+    .screen h1 {
+        font-size: 30px;
+        color: #bfa46f;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .screen p {
+        font-size: 18px;
+        color: #444;
+        line-height: 1.5;
+    }
+
 </style>
 </head>
 <body>
 
 <div class="iphone">
+    <div class="side-button"></div>
     <div class="screen">
         <h1>¡Nos Casamos!</h1>
         <p>
@@ -98,4 +126,3 @@
 
 </body>
 </html>
-
