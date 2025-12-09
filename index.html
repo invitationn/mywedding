@@ -10,16 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
-  body {
+  html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
     font-family: 'Playfair Display', serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background: url('https://images.pexels.com/photos/2395249/pexels-photo-2395249.jpeg') center center / cover no-repeat;
-    overflow: hidden;
   }
 
   .iphone {
@@ -56,6 +55,9 @@
     box-shadow: inset 0 0 25px rgba(0,0,0,0.1);
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .slider-container {
@@ -67,26 +69,29 @@
   .slider {
     display: flex;
     transition: transform 0.4s ease-in-out;
+    height: 100%;
   }
 
   .slide {
     min-width: 100%;
     height: 100%;
-    padding: 25px;
+    padding: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
   }
 
   h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 48px;
     color: #bfa46f;
+    margin: 0 0 15px 0;
   }
 
-  p, a { font-size: 18px; color: #5c4b3b; }
+  p, a { font-size: 18px; color: #5c4b3b; margin: 5px 0; }
 
   .btn {
     margin-top: 15px;
@@ -147,55 +152,47 @@
     border: none;
     border-radius: 12px;
   }
+
+  img { max-width: 100%; border-radius: 15px; margin-top: 10px; }
 </style>
 
 </head>
 <body>
 
-<!-- iPhone -->
 <div id="phone" class="iphone">
   <div class="side-button"></div>
 
   <div class="screen">
-
-    <!-- SLIDER -->
     <div class="slider-container">
       <div class="slider" id="slider">
-
-        <!-- SLIDE 1 -->
+        <!-- SLIDES -->
         <div class="slide">
           <h1>¡Nos Casamos!</h1>
-          <p>03/01/2026<br>Virgen del Rosario<br>19:00 hs</p>
+          <p>03/01/2026</p>
+          <p>Virgen del Rosario</p>
+          <p>19:00 hs</p>
         </div>
-
-        <!-- SLIDE 2 -->
         <div class="slide">
           <h1>Ceremonia</h1>
-          <p>Iglesia Virgen del Rosario<br>19:00 hs</p>
+          <p>Iglesia Virgen del Rosario</p>
+          <p>19:00 hs</p>
           <a href="#" target="_blank">📍 Ver ubicación</a>
         </div>
-
-        <!-- SLIDE 3 -->
         <div class="slide">
           <h1>Recepción</h1>
-          <p>Posada Los Abuelos<br>20:30 hs</p>
+          <p>Posada Los Abuelos</p>
+          <p>20:30 hs</p>
           <a href="#" target="_blank">📍 Ver ubicación</a>
         </div>
-
-        <!-- SLIDE 4 -->
         <div class="slide">
           <h1>Tenida</h1>
           <p><strong>Sport Elegante</strong></p>
         </div>
-
-        <!-- SLIDE 5 -->
         <div class="slide">
           <h1>Información</h1>
           <button class="btn" id="giftButton2">🎁 Regalo</button>
           <button class="btn" id="aboutButton">💛 About Us</button>
         </div>
-
-        <!-- SLIDE 6 (FOTOS) -->
         <div class="slide">
           <h1>Nuestras Fotos</h1>
           <div class="five-btns">
@@ -206,47 +203,42 @@
             <button onclick="openImg(5)">Foto 5</button>
           </div>
         </div>
-
       </div>
     </div>
 
-    <!-- Flechas -->
     <button class="arrow left" id="prevSlide">⟵</button>
     <button class="arrow right" id="nextSlide">⟶</button>
-
   </div>
 </div>
 
-<!-- Modal regalo -->
+<!-- Modales -->
 <div id="giftModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Cuenta Bancaria</h2>
-    <p>Banco: **Banco**</p>
-    <p>Cuenta: **123456789**</p>
-    <p>Titular: **Nombre Apellido**</p>
+    <p>Banco: Banco</p>
+    <p>Cuenta: 123456789</p>
+    <p>Titular: Nombre Apellido</p>
   </div>
 </div>
 
-<!-- Modal About Us -->
 <div id="aboutModal" class="modal">
   <div class="modal-content">
     <span class="closeAbout">&times;</span>
     <h2>💛 About Us</h2>
-    <img id="aboutImg" src="" style="width:100%; border-radius:15px; display:none;">
+    <img id="aboutImg" src="" style="display:none;">
     <input type="file" accept="image/*" onchange="previewAbout(event)">
   </div>
 </div>
 
-<!-- 5 Modales de imagen -->
-<div id="imageModal1" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,1)"><img id="preview1" style="display:none;width:100%;"></div></div>
-<div id="imageModal2" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,2)"><img id="preview2" style="display:none;width:100%;"></div></div>
-<div id="imageModal3" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,3)"><img id="preview3" style="display:none;width:100%;"></div></div>
-<div id="imageModal4" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,4)"><img id="preview4" style="display:none;width:100%;"></div></div>
-<div id="imageModal5" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,5)"><img id="preview5" style="display:none;width:100%;"></div></div>
+<div id="imageModal1" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,1)"><img id="preview1" style="display:none;"></div></div>
+<div id="imageModal2" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,2)"><img id="preview2" style="display:none;"></div></div>
+<div id="imageModal3" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,3)"><img id="preview3" style="display:none;"></div></div>
+<div id="imageModal4" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,4)"><img id="preview4" style="display:none;"></div></div>
+<div id="imageModal5" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,5)"><img id="preview5" style="display:none;"></div></div>
 
 <script>
-/* Animación */
+/* Animación entrada */
 window.onload = ()=> setTimeout(()=>document.getElementById('phone').classList.add('show'),600);
 
 /* SLIDER */
@@ -264,11 +256,7 @@ function moveSlide(dir){
 
 /* Swipe Touch */
 let startX = 0;
-
-document.querySelector('.slider-container').addEventListener('touchstart', e=>{
-  startX = e.touches[0].clientX;
-});
-
+document.querySelector('.slider-container').addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; });
 document.querySelector('.slider-container').addEventListener('touchend', e=>{
   let endX = e.changedTouches[0].clientX;
   if(startX - endX > 50) moveSlide(1);
@@ -291,14 +279,13 @@ window.onclick = e =>{
     e.target.style.display = "none";
 }
 
-/* PREVIEW FOTOS */
+/* Previews */
 function showPreview(e,n){
   const img = document.getElementById("preview"+n);
   img.src = URL.createObjectURL(e.target.files[0]);
   img.style.display = "block";
 }
 
-/* About preview */
 function previewAbout(e){
   const img = document.getElementById("aboutImg");
   img.src = URL.createObjectURL(e.target.files[0]);
@@ -308,4 +295,5 @@ function previewAbout(e){
 
 </body>
 </html>
+
 
