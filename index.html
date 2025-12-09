@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación de Boda</title>
 
-<!-- Fuente romántica -->
+<!-- Fuentes -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
@@ -17,12 +17,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     background: url('https://images.pexels.com/photos/2395249/pexels-photo-2395249.jpeg') center center / cover no-repeat;
     overflow: hidden;
   }
 
-  /* iPhone */
   .iphone {
     position: relative;
     width: 340px;
@@ -37,10 +36,7 @@
     transform: scale(0.8);
     transition: opacity 1s ease-out, transform 1s ease-out;
   }
-  .iphone.show {
-    opacity: 1;
-    transform: scale(1);
-  }
+  .iphone.show { opacity: 1; transform: scale(1); }
 
   .side-button {
     position: absolute;
@@ -52,18 +48,16 @@
     border-radius: 3px;
   }
 
-  /* Pantalla interna */
   .screen {
-    position: relative;
     width: 90%;
     height: 85%;
-    background: linear-gradient(to bottom, #ffffff 0%, #fffaf0 100%);
+    background: #fffaf0;
     border-radius: 40px;
     box-shadow: inset 0 0 25px rgba(0,0,0,0.1);
     overflow: hidden;
+    position: relative;
   }
 
-  /* Slider */
   .slider-container {
     width: 100%;
     height: 100%;
@@ -72,7 +66,7 @@
 
   .slider {
     display: flex;
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.4s ease-in-out;
   }
 
   .slide {
@@ -86,17 +80,13 @@
     align-items: center;
   }
 
-  .slide h1 {
+  h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 48px;
     color: #bfa46f;
   }
 
-  .slide p, .slide a {
-    font-size: 18px;
-    color: #5c4b3b;
-    line-height: 1.6;
-  }
+  p, a { font-size: 18px; color: #5c4b3b; }
 
   .btn {
     margin-top: 15px;
@@ -126,28 +116,25 @@
   .modal, .image-modal {
     display: none;
     position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
   }
 
   .modal-content, .image-modal-content {
-    background-color: #fffaf0;
-    margin: 7% auto;
+    background: #fffaf0;
     padding: 20px;
     border-radius: 20px;
     width: 85%;
-    max-width: 550px;
+    max-width: 500px;
     text-align: center;
   }
 
   .close, .closeAbout {
     float: right;
     font-size: 28px;
-    font-weight: bold;
     color: #bfa46f;
     cursor: pointer;
   }
@@ -156,17 +143,16 @@
     margin: 8px;
     padding: 12px;
     background: #bfa46f;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 12px;
-    cursor: pointer;
   }
 </style>
 
 </head>
 <body>
 
-<!-- 📱 IPHONE -->
+<!-- iPhone -->
 <div id="phone" class="iphone">
   <div class="side-button"></div>
 
@@ -174,36 +160,26 @@
 
     <!-- SLIDER -->
     <div class="slider-container">
-      <div class="slider">
+      <div class="slider" id="slider">
 
         <!-- SLIDE 1 -->
         <div class="slide">
           <h1>¡Nos Casamos!</h1>
-          <p>
-            Fecha: <strong>03/01/2026</strong><br>
-            Iglesia: Virgen del Rosario<br>
-            Hora: <strong>19:00 hs</strong>
-          </p>
+          <p>03/01/2026<br>Virgen del Rosario<br>19:00 hs</p>
         </div>
 
         <!-- SLIDE 2 -->
         <div class="slide">
           <h1>Ceremonia</h1>
-          <p>
-            Iglesia: <strong>Virgen del Rosario</strong><br>
-            Hora: 19:00 hs<br><br>
-            <a href="https://maps.google.com" target="_blank">📍 Ver ubicación</a>
-          </p>
+          <p>Iglesia Virgen del Rosario<br>19:00 hs</p>
+          <a href="#" target="_blank">📍 Ver ubicación</a>
         </div>
 
         <!-- SLIDE 3 -->
         <div class="slide">
           <h1>Recepción</h1>
-          <p>
-            Posada Los Abuelos<br>
-            Hora: 20:30 hs<br><br>
-            <a href="https://maps.google.com" target="_blank">📍 Ver ubicación</a>
-          </p>
+          <p>Posada Los Abuelos<br>20:30 hs</p>
+          <a href="#" target="_blank">📍 Ver ubicación</a>
         </div>
 
         <!-- SLIDE 4 -->
@@ -212,110 +188,124 @@
           <p><strong>Sport Elegante</strong></p>
         </div>
 
-        <!-- SLIDE 5 (regalo y about) -->
+        <!-- SLIDE 5 -->
         <div class="slide">
           <h1>Información</h1>
-          <button id="giftButton2" class="btn">🎁 Hacer un Regalo</button>
-          <button id="aboutButton" class="btn">💛 About Us</button>
+          <button class="btn" id="giftButton2">🎁 Regalo</button>
+          <button class="btn" id="aboutButton">💛 About Us</button>
         </div>
 
-        <!-- SLIDE 6 NUEVO: 5 BOTONES -->
+        <!-- SLIDE 6 (FOTOS) -->
         <div class="slide">
           <h1>Nuestras Fotos</h1>
           <div class="five-btns">
-            <button onclick="openImgModal(1)">Foto 1</button>
-            <button onclick="openImgModal(2)">Foto 2</button>
-            <button onclick="openImgModal(3)">Foto 3</button>
-            <button onclick="openImgModal(4)">Foto 4</button>
-            <button onclick="openImgModal(5)">Foto 5</button>
+            <button onclick="openImg(1)">Foto 1</button>
+            <button onclick="openImg(2)">Foto 2</button>
+            <button onclick="openImg(3)">Foto 3</button>
+            <button onclick="openImg(4)">Foto 4</button>
+            <button onclick="openImg(5)">Foto 5</button>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- FLECHAS -->
+    <!-- Flechas -->
     <button class="arrow left" id="prevSlide">⟵</button>
     <button class="arrow right" id="nextSlide">⟶</button>
 
   </div>
 </div>
 
-<!-- 🎁 MODAL REGALO -->
+<!-- Modal regalo -->
 <div id="giftModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Cuenta Bancaria</h2>
-    <p>Banco: <strong>Nombre del Banco</strong></p>
-    <p>Cuenta: <strong>123-456-789</strong></p>
-    <p>Titular: <strong>Juan Pérez</strong></p>
-    <p>Gracias por tu apoyo ❤️</p>
+    <p>Banco: **Banco**</p>
+    <p>Cuenta: **123456789**</p>
+    <p>Titular: **Nombre Apellido**</p>
   </div>
 </div>
 
-<!-- 💛 MODAL ABOUT US -->
+<!-- Modal About Us -->
 <div id="aboutModal" class="modal">
   <div class="modal-content">
     <span class="closeAbout">&times;</span>
     <h2>💛 About Us</h2>
-    <p>Nuestra historia comenzó así...</p>
-
-    <img src="https://via.placeholder.com/400x300" style="width:100%; border-radius:15px; margin-top:15px;">
+    <img id="aboutImg" src="" style="width:100%; border-radius:15px; display:none;">
+    <input type="file" accept="image/*" onchange="previewAbout(event)">
   </div>
 </div>
 
-<!-- 🖼️ MODALES DE FOTOS -->
-<div id="imageModal1" class="image-modal"><div class="image-modal-content">Foto 1<br><input type="file" accept="image/*"></div></div>
-<div id="imageModal2" class="image-modal"><div class="image-modal-content">Foto 2<br><input type="file" accept="image/*"></div></div>
-<div id="imageModal3" class="image-modal"><div class="image-modal-content">Foto 3<br><input type="file" accept="image/*"></div></div>
-<div id="imageModal4" class="image-modal"><div class="image-modal-content">Foto 4<br><input type="file" accept="image/*"></div></div>
-<div id="imageModal5" class="image-modal"><div class="image-modal-content">Foto 5<br><input type="file" accept="image/*"></div></div>
+<!-- 5 Modales de imagen -->
+<div id="imageModal1" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,1)"><img id="preview1" style="display:none;width:100%;"></div></div>
+<div id="imageModal2" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,2)"><img id="preview2" style="display:none;width:100%;"></div></div>
+<div id="imageModal3" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,3)"><img id="preview3" style="display:none;width:100%;"></div></div>
+<div id="imageModal4" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,4)"><img id="preview4" style="display:none;width:100%;"></div></div>
+<div id="imageModal5" class="image-modal"><div class="image-modal-content"><input type="file" accept="image/*" onchange="showPreview(event,5)"><img id="preview5" style="display:none;width:100%;"></div></div>
 
-<!-- ⭐ SCRIPTS -->
 <script>
-  // Animación iPhone
-  window.addEventListener('load', () => {
-    setTimeout(() => document.getElementById('phone').classList.add('show'), 700);
-  });
+/* Animación */
+window.onload = ()=> setTimeout(()=>document.getElementById('phone').classList.add('show'),600);
 
-  // Slider
-  let currentSlide = 0;
-  const slider = document.querySelector('.slider');
-  const totalSlides = document.querySelectorAll('.slide').length;
+/* SLIDER */
+let slider = document.getElementById("slider");
+let total = document.querySelectorAll(".slide").length;
+let index = 0;
 
-  document.getElementById('nextSlide').onclick = () => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-  };
+document.getElementById("nextSlide").onclick = ()=> moveSlide(1);
+document.getElementById("prevSlide").onclick = ()=> moveSlide(-1);
 
-  document.getElementById('prevSlide').onclick = () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-  };
+function moveSlide(dir){
+  index = (index + dir + total) % total;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}
 
-  // Modal Regalo
-  const giftBtn = document.getElementById('giftButton2');
-  const giftModal = document.getElementById('giftModal');
-  document.querySelector('.close').onclick = () => giftModal.style.display = "none";
-  giftBtn.onclick = () => giftModal.style.display = "block";
+/* Swipe Touch */
+let startX = 0;
 
-  // Modal About Us
-  const aboutBtn = document.getElementById('aboutButton');
-  const aboutModal = document.getElementById('aboutModal');
-  document.querySelector('.closeAbout').onclick = () => aboutModal.style.display = "none";
-  aboutBtn.onclick = () => aboutModal.style.display = "block";
+document.querySelector('.slider-container').addEventListener('touchstart', e=>{
+  startX = e.touches[0].clientX;
+});
 
-  // Modales de fotos
-  function openImgModal(n) {
-    document.getElementById(`imageModal${n}`).style.display = "block";
-  }
+document.querySelector('.slider-container').addEventListener('touchend', e=>{
+  let endX = e.changedTouches[0].clientX;
+  if(startX - endX > 50) moveSlide(1);
+  if(endX - startX > 50) moveSlide(-1);
+});
 
-  window.onclick = function(e) {
-    if (e.target.classList.contains("image-modal")) e.target.style.display = "none";
-    if (e.target === giftModal) giftModal.style.display = "none";
-    if (e.target === aboutModal) aboutModal.style.display = "none";
-  };
+/* Modales */
+const giftModal = document.getElementById("giftModal");
+document.getElementById("giftButton2").onclick = ()=> giftModal.style.display = "flex";
+document.querySelector(".close").onclick = ()=> giftModal.style.display = "none";
+
+const aboutModal = document.getElementById("aboutModal");
+document.getElementById("aboutButton").onclick = ()=> aboutModal.style.display = "flex";
+document.querySelector(".closeAbout").onclick = ()=> aboutModal.style.display = "none";
+
+function openImg(n){ document.getElementById("imageModal"+n).style.display="flex"; }
+
+window.onclick = e =>{
+  if(e.target.classList.contains("modal") || e.target.classList.contains("image-modal"))
+    e.target.style.display = "none";
+}
+
+/* PREVIEW FOTOS */
+function showPreview(e,n){
+  const img = document.getElementById("preview"+n);
+  img.src = URL.createObjectURL(e.target.files[0]);
+  img.style.display = "block";
+}
+
+/* About preview */
+function previewAbout(e){
+  const img = document.getElementById("aboutImg");
+  img.src = URL.createObjectURL(e.target.files[0]);
+  img.style.display = "block";
+}
 </script>
 
 </body>
 </html>
+
