@@ -169,6 +169,72 @@
   }
 
   img { max-width: 100%; border-radius: 15px; margin-top: 10px; }
+  .map-button {
+    color: #ffffff;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background 0.3s;
+  }
+  .map-button:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    height: 70%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+  }
+  .close-button:hover {
+    background: #e60000;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
+  }
 
 </style>
 
@@ -182,17 +248,30 @@
     <div class="slider-container">
       <div class="slider" id="slider">
         <!-- SLIDES -->
-       <div class="slide" style="background-image: url('https://images.pexels.com/photos/35131541/pexels-photo-35131541.jpeg');">
-          <h1>¡Nos Casamos!</h1>
-          <p style="color: #ffffff;" font-size: 58px;>03/01/2026</p>
-          <p style="color: #ffffff;"font-size: 58px;>19:00 hs</p>
-        </div>
-        <div class="slide"style="background-image: url('https://images.pexels.com/photos/35131544/pexels-photo-35131544.jpeg');">
+       <div class="slide" style="background-image: url('https://images.pexels.com/photos/35131544/pexels-photo-35131544.jpeg'); position: relative;">
           <h1>Ceremonia</h1>
           <p>Iglesia Virgen del Rosario</p>
           <p>19:00 hs</p>
-          <a href="https://www.google.com/maps/place/Iglesia+Virgen+del+Rosario/@-26.2331507,-57.1791147,17z" target="_blank" style="color: white; text-decoration: underline;">📍 Ver ubicación</a>
+  <!-- Botón para abrir el modal -->
+            <button id="openMap" class="map-button">📍 Ver ubicación</button>
+            </div>
+
+<!-- Modal -->
+    <div id="mapModal" class="modal">
+      <div class="modal-content">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d894.7195206119784!2d-57.17911466928244!3d-26.23315067525744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945bee6322e24473%3A0x13e1b3e2e81906f3!2sIglesia!5e0!3m2!1ses-419!2spy!4v1765295056233!5m2!1ses-419!2spy" 
+                width="100%" 
+                height="100%" 
+                style="border:0; border-radius:10px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+                <button id="closeMap" class="close-button">✖</button>
+            </div>
         </div>
+      
         <div class="slide"style="background-image: url('https://images.pexels.com/photos/35131537/pexels-photo-35131537.jpeg');">
           <h1>Recepción</h1>
           <p>Posada Los Abuelos</p>
@@ -302,6 +381,24 @@ function previewAbout(e){
   img.src = URL.createObjectURL(e.target.files[0]);
   img.style.display = "block";
 }
+  const openMap = document.getElementById('openMap');
+  const closeMap = document.getElementById('closeMap');
+  const mapModal = document.getElementById('mapModal');
+
+  openMap.addEventListener('click', () => {
+    mapModal.style.display = 'flex';
+  });
+
+  closeMap.addEventListener('click', () => {
+    mapModal.style.display = 'none';
+  });
+
+  // Cerrar modal si clickeas fuera del contenido
+  mapModal.addEventListener('click', (e) => {
+    if (e.target === mapModal) {
+      mapModal.style.display = 'none';
+    }
+  });
 </script>
 
 </body>
